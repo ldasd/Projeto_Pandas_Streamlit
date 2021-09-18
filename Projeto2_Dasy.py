@@ -1,3 +1,10 @@
+
+#Projeto 2: Construindo um dashboard
+#Participantes:
+#Leticia das Dores Nascimento Santos
+#Lucas Delfino Nogueira
+#Mario Henrique Romagna Cesa
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -332,7 +339,14 @@ periodo = df_raw.Year.unique()
 periodo.sort()
 qtd_moedas = len(df_raw.Name.unique())
 
-st.header('Projeto Data Science Degree')
+
+
+st.header('Projeto 2: Construindo um dashboard ')
+st.text('Participantes:')
+st.text('Leticia das Dores Nascimento Santos')
+st.text('Lucas Delfino Nogueira')
+st.text('Mario Henrique Romagna Cesa')
+
 st.title('Análise de Cripto Moedas')
 st.subheader('Serão analisados a Evolução do Volume e dos Preços de negociação das Criptos')
 
@@ -419,6 +433,27 @@ fig = px.bar(df_final,
         #  height=500
                 )
 st.plotly_chart(fig)
+
+st.subheader('Segue a evolução do Volume de transações das principais moedas')
+
+fig = px.bar(df_final,
+          y='Name',
+          x='Volume'
+                 ,
+       #  size='Volume',
+          color='Name',
+          # hover_name='Name',
+        #  log_x=True,
+        #  size_max=100,
+          animation_frame='Date',
+        #  animation_group='Name',
+                 #,
+          #range_x=['2017', '2022'],
+          range_x=[-10_000, 80_000_000_000],
+        #  height=500
+                )
+st.plotly_chart(fig)
+
 
 st.subheader('E por fim, a evolução dos preços em relação ao volume de transações das principais moedas')
 
